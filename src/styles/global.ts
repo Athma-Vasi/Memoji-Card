@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+type GlobalStyleProps = {
+	colour?: string
+	backgroundColour?: string
+}
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
 html {
   margin: 0;
   padding: 0;
@@ -14,11 +19,16 @@ html {
 box-sizing: inherit;
 }
 
-body {
-	display: grid;
-	place-content: center;
+body {	
   font-size: 1.6rem;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+
+  font-family: sans-serif;
+
+  color: ${({ colour }) => (colour ? colour : 'hsl(180, 100%, 25%)')};
+	background-color: ${({ backgroundColour }) =>
+		backgroundColour ? backgroundColour : 'white'};   
 }
 
 a{

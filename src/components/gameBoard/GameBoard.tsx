@@ -152,83 +152,71 @@ function GameBoard({
 		})
 	}
 
+	const colour = state.isDarkMode
+		? state.themeState.colour.dark
+		: state.themeState.colour.light
+	const backgroundColour = state.isDarkMode
+		? state.themeState.backgroundColour.dark
+		: state.themeState.backgroundColour.light
+
 	return (
-		<>
-			<Container
-				colour={
-					state.isDarkMode ? state.themeState.colour.dark : state.themeState.colour.light
-				}
-				backgroundColour={
-					state.isDarkMode
-						? state.themeState.backgroundColour.dark
-						: state.themeState.backgroundColour.light
-				}
-			>
-				{!state.isGameRunning && (
-					<Wrapper
-						colour={
-							state.isDarkMode
-								? state.themeState.colour.dark
-								: state.themeState.colour.light
-						}
-						backgroundColour={
-							state.isDarkMode
-								? state.themeState.backgroundColour.dark
-								: state.themeState.backgroundColour.light
-						}
-					>
-						<h3 data-cy="game-lossText">
+		<Container colour={colour} backgroundColour={backgroundColour}>
+			{!state.isGameRunning && (
+				<Wrapper colour={colour} backgroundColour={backgroundColour}>
+					<Container colour={colour} backgroundColour={backgroundColour}>
+						<h3 data-cy="game-lossText" style={{ fontSize: 'clamp(1.5rem, 3vw, 3rem)' }}>
 							Wow! 🤩 That's a great score! Try to beat your best! ✺◟(＾∇＾)◞✺
 						</h3>
 						<Button
-							colour={
-								state.isDarkMode
-									? state.themeState.colour.dark
-									: state.themeState.colour.light
-							}
-							backgroundColour={
-								state.isDarkMode
-									? state.themeState.backgroundColour.dark
-									: state.themeState.backgroundColour.light
-							}
+							colour={colour}
+							backgroundColour={backgroundColour}
 							onClick={handlePlayAgainBttnClick}
 							data-cy="bttn-playAgain"
 						>
 							Play again!
 						</Button>
-					</Wrapper>
-				)}
-				{state.isGameRunning &&
-					state.allEmojis?.map((emoji: Emoji, index: number) => (
-						<div className="emojis" key={index}>
+					</Container>
+				</Wrapper>
+			)}
+			{state.isGameRunning &&
+				state.allEmojis?.map((emoji: Emoji, index: number) => {
+					let emojiName = emoji.unicodeName.split(' ')[0].includes('E')
+						? emoji.unicodeName.split(' ').slice(1).join(' ')
+						: emoji.unicodeName
+					emojiName = `${emojiName[0].toUpperCase()}${emojiName.slice(1)}`
+					emojiName.length > 30 && (emojiName = emojiName.slice(0, 30) + '...')
+
+					return (
+						<div key={index}>
 							<Card
-								colour={
-									state.isDarkMode
-										? state.themeState.colour.dark
-										: state.themeState.colour.light
-								}
-								backgroundColour={
-									state.isDarkMode
-										? state.themeState.backgroundColour.dark
-										: state.themeState.backgroundColour.light
-								}
+								colour={colour}
+								backgroundColour={backgroundColour}
 								onClick={handleCardClick}
 								data-emoji={emoji.character}
 								data-cy="emoji-card"
 							>
-								<p style={{ transform: 'scale(4)' }}>{emoji.character}</p>
+								<div
+									style={{
+										fontSize: 'clamp(4rem, 6vw, 9rem)',
+									}}
+								>
+									{emoji.character}
+								</div>
 								{!state.isHardMode && (
-									<p data-cy="emoji-unicodeName">
-										{emoji.unicodeName.split(' ')[0].includes('E')
-											? emoji.unicodeName.split(' ').slice(1).join(' ')
-											: emoji.unicodeName}
+									<p
+										data-cy="emoji-unicodeName"
+										style={{
+											fontSize: 'clamp(1.25rem, 1.75vw, 2rem)',
+										}}
+									>
+										{emojiName}
 									</p>
 								)}
 							</Card>
 						</div>
-					))}
-			</Container>
-		</>
+					)
+				})}
+		</Container>
 	)
 }
 

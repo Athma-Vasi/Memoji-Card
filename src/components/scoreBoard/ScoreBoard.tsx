@@ -23,35 +23,30 @@ function ScoreBoard({
 		})
 	}
 
+	const colour = state.isDarkMode
+		? state.themeState.colour.dark
+		: state.themeState.colour.light
+	const backgroundColour = state.isDarkMode
+		? state.themeState.backgroundColour.dark
+		: state.themeState.backgroundColour.light
+
 	return (
-		<>
-			<Header
-				style={{
-					justifyContent: 'space-between',
-					paddingLeft: '5rem',
-					paddingRight: '5rem',
-				}}
+		<Header
+			style={{
+				justifyContent: 'space-between',
+			}}
+		>
+			<h3 data-cy="highscore">Highscore: {state.highScore}</h3>
+			<h3 data-cy="score">Score: {state.score}</h3>
+			<Button
+				colour={colour}
+				backgroundColour={backgroundColour}
+				onClick={handleDifficultyClick}
+				data-cy="bttn-hardMode"
 			>
-				<h3 data-cy="highscore">Highscore: {state.highScore}</h3>
-				<h3 data-cy="score">Score: {state.score}</h3>
-				<Button
-					colour={
-						state.isDarkMode
-							? state.themeState.colour.dark
-							: state.themeState.colour.light
-					}
-					backgroundColour={
-						state.isDarkMode
-							? state.themeState.backgroundColour.dark
-							: state.themeState.backgroundColour.light
-					}
-					onClick={handleDifficultyClick}
-					data-cy="bttn-hardMode"
-				>
-					Hard mode
-				</Button>
-			</Header>
-		</>
+				Hard mode
+			</Button>
+		</Header>
 	)
 }
 

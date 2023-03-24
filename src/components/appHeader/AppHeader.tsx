@@ -1,6 +1,7 @@
 import Button from '../styled-generics/Button'
 import { Header } from '../styled-generics/Header'
 import { Action, Dispatch, State } from '../../types'
+import { BsSun, BsMoonFill } from 'react-icons/bs'
 
 export default function AppHeader({
 	state,
@@ -12,32 +13,49 @@ export default function AppHeader({
 	action: Action
 }): JSX.Element {
 	function handleToggleThemeClick(ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-		ev.currentTarget.textContent = ev.currentTarget.textContent === '🌑' ? '☀️' : '🌑'
+		// ev.currentTarget.textContent = ev.currentTarget.textContent === '🌑' ? '☀️' : '🌑'
 
 		dispatch({
 			type: action.toggleTheme,
 			payload: {
-				isDarkMode: ev.currentTarget.textContent === '🌑' ? true : false,
+				isDarkMode: state.isDarkMode ? false : true,
 			},
 		})
 	}
 
+	const colour = state.isDarkMode
+		? state.themeState.colour.dark
+		: state.themeState.colour.light
+	const backgroundColour = state.isDarkMode
+		? state.themeState.backgroundColour.dark
+		: state.themeState.backgroundColour.light
+
 	return (
-		<>
-			<Header>
-				<h1
+		<Header>
+			<h1
+				style={{
+					fontSize: 'clamp(2rem, 4vw, 6rem)',
+				}}
+			>
+				Memoji Card
+			</h1>
+
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'space-between',
+					width: '62%',
+				}}
+			>
+				<div
 					style={{
-						width: 'clamp(15ch, 35ch, 60ch)',
-						fontSize: '4rem',
-					}}
-				>
-					Memoji Card
-				</h1>
-				<Header
-					style={{
+						display: 'flex',
+						alignItems: 'center',
+						width: '62%',
 						justifyContent: 'space-around',
-						paddingLeft: '5rem',
-						paddingRight: '5rem',
+						fontSize: 'clamp(1rem, 2vw, 3rem)',
+						gap: 'clamp(1rem, 2vw, 3rem)',
 					}}
 				>
 					<a href="https://github.com/Athma-Vasi" className="link">
@@ -46,39 +64,18 @@ export default function AppHeader({
 					<a href="https://github.com/Athma-Vasi/Memory-Card" className="link">
 						View code
 					</a>
-				</Header>
+				</div>
+
 				<Button
-					colour={
-						state.isDarkMode
-							? state.themeState.colour.dark
-							: state.themeState.colour.light
-					}
-					backgroundColour={
-						state.isDarkMode
-							? state.themeState.backgroundColour.dark
-							: state.themeState.backgroundColour.light
-					}
-					style={{
-						clipPath: 'circle()',
-						transform: 'scale(2)',
-						border: 'none',
-						outline: 'none',
-						minWidth: '2rem',
-						minHeight: '2rem',
-						marginTop: '4.5rem',
-						marginLeft: '2rem',
-						marginRight: '1rem',
-					}}
+					colour={colour}
+					backgroundColour={backgroundColour}
 					type="button"
 					data-cy="bttn-toggleTheme"
 					onClick={handleToggleThemeClick}
 				>
-					☀️
+					{state.isDarkMode ? <BsMoonFill size={30} /> : <BsSun size={30} />}
 				</Button>
-			</Header>
-			<Header>
-				<h3>Click on a card and don't click on any more than once!</h3>
-			</Header>
-		</>
+			</div>
+		</Header>
 	)
 }

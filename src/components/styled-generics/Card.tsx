@@ -6,30 +6,22 @@ type CardProps = {
 }
 
 const Card = styled.div<CardProps>`
-	// padding-left: auto;
-	// padding-right: auto;
-	// padding-top: 0.5rem;
-	// padding-bottom: 0.5rem;
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
 
-	padding-left: 1rem;
-	padding-right: 1rem;
+	height: clamp(15rem, 20vw, 30rem);
+	width: clamp(15rem, 20vw, 30rem);
 
-	height: 19rem;
+	padding-left: clamp(1rem, 2vw, 3rem);
+	padding-right: clamp(1rem, 2vw, 3rem);
 
 	transition: 146ms all ease-in-out;
 
 	color: ${({ colour }) => (colour ? colour : 'hsl(180, 100%, 25%)')};
 	background-color: ${({ backgroundColour }) =>
 		backgroundColour ? backgroundColour : 'white'};
-
-	// width: min(40ch, 100% - 2rem);
-
-	width: clamp(15ch, 35ch, 60ch);
 
 	&:hover {
 		cursor: pointer;

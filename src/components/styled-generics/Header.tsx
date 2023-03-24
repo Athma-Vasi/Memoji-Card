@@ -5,8 +5,11 @@ const Header = styled.header`
 	align-items: center;
 	justify-content: space-between;
 
-	padding-left: 2rem;
-	padding-right: 2rem;
+	padding-left: clamp(1rem, 2vw, 3rem);
+	padding-right: clamp(1rem, 2vw, 3rem);
+	padding-bottom: clamp(1rem, 2vw, 3rem);
+
+	gap: clamp(1rem, 2vw, 3rem);
 
 	width: 100%;
 `
