@@ -6,6 +6,10 @@ Memory card project as part of The Odin Project curriculum
 
 #### March 23, 2023 Update
 
+There are certainly many improvements that I can make, having improved my skills since I first built this project. For sentimental reasons, all modifications were designed to be as minimally disruptive to the original theme and presentation as possible.
+
+These are the changes I made:
+
 - made it responsive
 - game logic is unchanged
 - modified jsx for better readability

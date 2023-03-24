@@ -32,6 +32,8 @@ const Card = styled.div<CardProps>`
 
 	border: 1px solid ${({ colour }) => (colour ? colour : 'hsl(180, 100%, 25%)')};
 	border-radius: 4px;
+
+	transition: 146ms all ease-in-out;
 `
 
 export default Card
