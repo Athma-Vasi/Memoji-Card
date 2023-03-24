@@ -4,9 +4,23 @@ Memory card project as part of The Odin Project curriculum
 
 [Click here to view project live](https://athma-vasi.github.io/Memory-Card/)
 
+#### March 23, 2023 Update
+
+- made it responsive
+- game logic is unchanged
+- modified jsx for better readability
+
 ## Things I learned
 
 This project is designed to cement foundational React principles introduced in the CV-Application project.
+
+#### Technologies used
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Create React App](https://create-react-app.dev/)
+- [Styled-Components](https://styled-components.com/)
+- [Cypress](https://www.cypress.io/)
 
 ### TL;DR
 
