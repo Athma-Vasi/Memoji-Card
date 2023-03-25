@@ -18,6 +18,14 @@ These are the changes I made:
 - modified jsx for better readability
 - modified styled-components
 
+#### Screenshots
+
+<div align="center">
+  <img src="./src/images/light-easy-round1.png" alt="round 1 in light theme easy mode" width="125px"/>
+  <img src="./src/images/dark-hard-round1.png" alt="round 1 in dark theme hard mode" width="125px"/>
+  <img src="./src/images/dark-easy-round2.png" alt="round 2 in dark theme easy mode" width="125px"/>
+</div>
+
 ## Things I learned
 
 This project is designed to cement foundational React principles introduced in the CV-Application project.
