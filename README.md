@@ -6,17 +6,17 @@ You'll need to keep your wits about you to remember which cards you've already c
 
 If you're looking for a fun and challenging game that's sure to keep you entertained for hours, look no further than **Memoji Card**. With its addictive gameplay and colorful design, it's the perfect way to pass the time and flex your mental muscles at the same time. Give it a try today and see how far you can go!
 
-[Click here to view project live](https://athma-vasi.github.io/Memory-Card/)
+[Click here to view project live](https://athma-vasi.github.io/Memoji-Card/)
 
 #### March 23, 2023 Update
 
-There are certainly many improvements that I can make, having improved my skills since I first built this project. For sentimental reasons, all modifications were designed to be as minimally disruptive to the original theme and presentation as possible.
+There are certainly many improvements that I can make, having improved my skills since I first built this project. For sentimental reasons, all modifications were designed to be as minimally disruptive to the original theme and presentation as possible, with the game logic remaining unchanged.
 
 These are the changes I made:
 
 - made it responsive
-- game logic is unchanged
 - modified jsx for better readability
+- modified styled-components
 
 ## Things I learned
 
